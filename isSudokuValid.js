@@ -6,7 +6,18 @@ function isSudokuValid(board) {
       return row.join("") === "123456789";
     });
   };
-  return isValid(board);
+  // return isValid(board);
+  // find columns and sub-grids grid
+  // check rows, columns, and sub-grids should be valid
+  const rows = [...board];
+  console.log(rows);
+  const columns = [[], [], [], [], [], [], [], [], []]; //[[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]....]
+  board.forEach((row, rowIndex) => {
+    row.forEach((column, columnIndex) => {
+      columns[columnIndex][rowIndex] = column;
+    });
+  });
+  return isValid(rows) && isValid(columns);
 }
 const board = [
   [1, 5, 2, 4, 8, 9, 3, 7, 6],
